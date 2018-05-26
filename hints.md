@@ -243,3 +243,9 @@ env.close()  //关闭env环境,dialog不能被gui关闭,只能用本行命令关
 ## 持续更新中...
 
 ## END
+
+
+[remote "all-remote-git(gitee/github/gitlab)"]
+     url = https://gitee.com/freelogic/computer-using-hints.git
+     url = https://github.com/freelogic/computer-using-hints.git
+     url = https://gitlab.com/freelogic/computer-using-hints.git
