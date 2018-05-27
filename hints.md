@@ -215,6 +215,7 @@
 * ubuntu的ufw安装和使用
   * TODO: ubuntu的ufw安装和使用  
 
+
 ## 2. Special Topic Hints
 
 ### 2.1 Programming
@@ -370,14 +371,13 @@
       * 建议如果是WIN,进入控制面板,可以设定防火墙的路由规则,可以放开port口的出入,也可以将master/agent的ip都列为全部放开!
       * 如果是linux,比如ubuntu,则可以用iptables防火墙设定规则来放开PORT或IP,因为最新ubuntu18.04简化了iptables,用工具UFW来控制防火墙,请查相关脚本,UFW使用较为方便!
 
-   
 ### 2.2 机器学习
 
 #### 2.2.1 环境安装 
 
 ##### 2.2.1.1 ubuntu   
    
-###### 2.1.1.1.1 ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW
+###### 2.2.1.1.1 ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW
 * 1.查看nvidia显卡配置
 
   ```
@@ -489,7 +489,7 @@
   * 这里仅仅是我这种硬件软件配置的成功案例,供看管参考,不代表原理和其他软硬件配置都能成功,还需尝试!!!
     * 另外,我CUDA的几个patch忘记安装了,估计是它修改兼容性和BUG的,目前不出其他问题,我就不安装了,怕有问题;
 
-###### 2.1.1.1.2 ubuntu18.04环境安装OpenAI的GYM的强化学习环境
+###### 2.2.1.1.2 ubuntu18.04环境安装OpenAI的GYM的强化学习环境
 * 1.安装GYM环境
   * 通常做法,用命令: pip3 install gym[all]  //这里假设ubuntu已经安装升级了python3和pip3,且按照上述方法切换默认python为PY3而不是PY2;
   * 问题:一般你会遇到结果提示,Box2D和atari-py安装失败,重复上述命令,再次安装全部gym[all],就更清晰的看到只有此2模块没有安装成功(和win10一致);
