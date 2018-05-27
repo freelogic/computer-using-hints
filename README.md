@@ -2,11 +2,14 @@
 
 ## 说明
 * 本项目记录作者的一些有用的hints,仅作记录和分享之用,但无法保证其实时性和有效性,请以参考资料的观点来看待;
-* 本项目公开发布于以下多个在线GIT仓库:
+* 本项目源码公开发布于以下多个在线GIT仓库:
   * [gitee(https://gitee.com/freelogic/computer-using-hints.git)](https://gitee.com/freelogic/computer-using-hints.git);
   * [github(https://github.com/freelogic/computer-using-hints.git)](https://github.com/freelogic/computer-using-hints.git);
   * [gitlab(https://gitlab.com/freelogic/computer-using-hints.git)](https://gitlab.com/freelogic/computer-using-hints.git);
-  * [博客园(链接到本项目)](http://www.cnblogs.com/taichu/);
+* 本项目页面page公开发布于如下地址:
+  * [博客园](https://www.cnblogs.com/taichu/p/9095062.html);
+  * [freelogic的webpost@gitee](http://freelogic.gitee.io/webpost/2018/05/27/computer-using-hints-%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9.html)
+  * [freelogic的webpost@github](https://freelogic.github.io/2018/05/27/computer-using-hints-%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9.html)
 * 转载和引用请指明原作者和连接出处.
 * [README英文版(README_en.md)](README_en.md)
 
