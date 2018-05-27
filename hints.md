@@ -42,7 +42,7 @@
       * 2.2.1.1-ubuntu   
         * 2.1.1.1.1-ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW    
         * 2.1.1.1.2-ubuntu18.04环境安装OpenAI的GYM的强化学习环境 
-  * 2.3 大叔据
+  * 2.3 大数据
     * 2.3.1-日志 
       * 2.3.1.1-ELK   
         * 2.3.1.1.1-安装ELK   
@@ -544,7 +544,7 @@
     * 安装tkinter: sudo apt install python3-tk   //特别注意,不是 sudo apt install python-tk!!!
 
 
-### 2.3 大叔据
+### 2.3 大数据
 
 #### 2.3.1 日志 
 
