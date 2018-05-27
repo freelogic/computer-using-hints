@@ -11,11 +11,17 @@
     * 1.1.6-Ubuntu18.04如何安装pycharm?
     * 1.1.7-Ubuntu下如何安装循环依赖的lib库?
     * 1.1.8-Ubuntu18.04解决USB无线鼠标插入后无法使用的问题? 
+    * 1.1.9-Ubuntu18.04下计算SHA1和MD5值? 
+    * 1.1.10-Ubuntu18.04下文件目录比较工具(类似beyondcompare)?     
+    * 1.1.11-Ubuntu18.04下安装类似notepad++的文本工具   
+    * 1.1.12-Ubuntu18.04下安装OCR工具(tesseract)  
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
       * 2.1.1.1-GIT 
         * 2.1.1.1.1-如何从本地PUSH分支改动到多个远端GIT仓库(假设远端GIT仓库为多个备份镜像库且内容相同) ?
+      * 2.1.1.2-GIT仓库
+        * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
   * 2.2 机器学习
     * 2.2.1-环境安装 
       * 2.2.1.1-ubuntu   
@@ -106,8 +112,51 @@
   * 解决: 插入电源,笔记本电脑就能堆新接入的无线USB鼠标感知并能使用了;
   * TODO:暂未找到如何设定ubuntu18.04在电源模式下禁用或弃用USB设备(如USB的WIFI鼠标)的配置;
   * TODO:暂未找到ubuntu18.04中调节鼠标大小的方法和命令;
-  
 
+#### 1.1.9 Ubuntu18.04下计算SHA1和MD5值? 
+* ubuntu下计算sha1/md5值
+  * 参考: [http://blog.sina.com.cn/s/blog_15e13208d0102w54j.html](http://blog.sina.com.cn/s/blog_15e13208d0102w54j.html)
+  * 命令: md5sum ./hoek-2.16.3.tgz > ./hoek-2.16.3.tgz.md5.txt    //假设你下载了tgz到当前目录
+  * 命令: sha1sum ./hoek-2.16.3.tgz > ./hoek-2.16.3.tgz.sha1.txt   //假设你下载了tgz到当前目录
+
+#### 1.1.10 Ubuntu18.04下文件目录比较工具(类似beyondcompare)?
+* Ubuntu下有免费工具meld,它非常类似beyondcompare,可以比较目录和文件,很好用!
+  * 安装: 在ubuntu搜索关键字"软件",打开"软件"(类似app store或安装应用商店)后,在它里面搜索关键字"meld",直接安装和启动;
+
+#### 1.1.11 Ubuntu18.04下安装类似notepad++的文本工具 
+* ubuntu下不能直接安装notepad++,但可以安装其家族的名为"notepadqq"的linux版本;
+  * 参考:[Ubuntu 16.04安装Notepadqq编辑器替代Notepad++](https://www.cnblogs.com/EasonJim/p/7225861.html)
+  * 安装:
+  
+  ```
+    sudo add-apt-repository ppa:notepadqq-team/notepadqq
+    sudo apt-get update
+    sudo apt-get install notepadqq
+  ```
+
+#### 1.1.12 Ubuntu18.04下安装OCR工具(tesseract)
+* ubuntu下的OCR工具不多(至少没有win下的金山OCR,汉王OCR,紫光OCR等等),但免费预装的tesseract就非常好!
+  * ubuntu18.04自带tesseract4.00版本,可以识别中英文(中文识别需如下安装中文包),测试效果还不错,超过一些在线OCR网站(收费或免费),它是最新LSTM的神经网络及机器学习的内容,可以进一步学习;
+  * 安装:
+  
+  ```
+  
+    sudo apt-get install tesseract-ocr  //发现ubuntu18.04已经安装了最新的4.00版本
+    sudo apt-get install tesseract   //同上
+    sudo apt-get install tesseract-ocr-chi-sim //安装额外的中文简体识别包
+    tesseract //查看命令的格式和参数
+    tesseract --list-langs //查看支持的语言
+    tesseract ./yangpu-xiaoxue.jpg yangpu-xiaoxue.txt -l chi_sim  //进行识别命令并输出结果txt文件;
+    # 性能说明: 中文识别(4MB的JPG包含2列450行文字)运用到了4个core,大约30秒左右,未查是否使用了GPU,仅供参考;
+  
+  ```
+  
+  * 参考1:[https://blog.csdn.net/dcrmg/article/details/78128026](https://blog.csdn.net/dcrmg/article/details/78128026)
+  * 参考2(详细):[https://blog.csdn.net/yimingsilence/article/details/51353772](https://blog.csdn.net/yimingsilence/article/details/51353772)
+  * 第三方UI界面软件: 在ubuntu的"软件/software"中查找"gimagereader"关键字并安装它,它是tesseract的一个UI界面,非常好用!
+  * 缺陷:tesseract不能自动转换为带表格的XLS文件格式,而某些在线OCR(如下),或win下的OCR支持中文版面识别,能将table转换为XLS的表格导出;
+  * 其他OCR: 在线OCR有免费和收费版本,较多,推荐这个,它自持表格识别并转换为xls表格,免费的最大能识别10MB以上的JPG;
+    * [https://zhcn.109876543210.com/](https://zhcn.109876543210.com/)
 
 ## 2. Special Topic Hints
 
@@ -130,6 +179,15 @@
      url = https://gitlab.com/<user-account>/<repo-name>.git
 
    ```
+
+##### 2.1.1.2 GIT仓库
+
+###### 2.1.1.2.1 无法注册新GITLAB帐号且忘记老帐号密码怎么办?
+* 如果无法注册GITLAB帐号,可能是因为register new account需要用到google的认证图形识别控件,但国内被墙了,请翻墙再测试;
+  * 你也可以用github帐号,授权其登录gitlab,一样用,还更方便和一致,忘记密码也可以恢复如下描述;
+* 如何进入gitlab帐号(忘记密码和关联email的情况下)?
+  * 如果gitlab帐号和github同名或绑定; 那么用github帐号登录到gitlab当中, 然后可以修改password和关联email;
+
    
 ### 2.2 机器学习
 
