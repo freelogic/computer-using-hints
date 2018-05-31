@@ -22,6 +22,7 @@
     * 1.1.17-Ubuntu18.04的ufw的简易防火墙操作
     * 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
     * 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
+    * 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -266,6 +267,8 @@ sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb  # install deb包；
 sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已经安装的模块名字和安装包的名字不同，请注意；
 
 ```
+
+#### 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
 
 ## 2. Special Topic Hints
 
