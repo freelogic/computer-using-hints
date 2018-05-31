@@ -8,7 +8,7 @@
 * Feature
   * 1.Append new hints about ubuntu18.04;
   * 2.Add JDK/MYSQL/JMETER installuation guide;
-  
+  * 3.Add QQ/desktop link file/dpkg
   
   
 # OPEN ISSUES

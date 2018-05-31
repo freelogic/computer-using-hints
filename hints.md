@@ -20,6 +20,8 @@
     * 1.1.15-查看Ubuntu18.04的硬件配置
     * 1.1.16-Ubuntu18.04的apt-get命令如何安装指定版本?
     * 1.1.17-Ubuntu18.04的ufw的简易防火墙操作
+    * 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
+    * 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -105,6 +107,11 @@
 * install QQ
   * Best way is use "[WEBQQ(http://web2.qq.com/)](http://web2.qq.com/)" instead of install local program;
   * WEBQQ is an URL, you can make a URL link icon on desktop of ubuntu;
+* wine+麒麟版本wine-qqintl的说明
+  * 参考： https://www.cnblogs.com/linux130/p/5694840.html
+  * 失败： 首先顺利安装wine和winetricks，但是按照以上参考用dpkg安装麒麟版本的wine-qqintel后，安装顺利，启动无反映，甚至有一次将ubuntu18.04弄死机了！
+  * 推测： wine比较好资源； 麒麟版定制的qq不适合ubuntu，毕竟麒麟版本的ubuntu是一个ubuntu的中文子集，有一定特殊性；
+  * 结论： wine有一定风险，容易中win的病毒，速度慢，好资源，而且兼容性不好，暂时还是用webqq；
 
 #### 1.1.5 Ubuntu18.04如何安装chrome?
 * install chrome
@@ -216,6 +223,49 @@
 * ubuntu的ufw安装和使用
   * TODO: ubuntu的ufw安装和使用  
 
+#### 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
+* 说明：ubuntu不如win10，可以将exe文件或其他文件直接拖到桌面来建立一个lnk文件，而是需要单独建立desktop文件且自己填写相关字段；
+* 参考：[Ubuntu怎么添加桌面快捷启动方式](https://jingyan.baidu.com/article/2d5afd6929699185a2e28ed4.html)
+* 举例：请参考我本地pycharm的桌面desktop文件；
+  * "Icon"字段是连接ico图标的，如下暂时没有先空着；
+  * 此desktop文件需要鼠标右键选择“属性->权限”，勾选“允许作为程序执行文件”，才能再以后双击运行；
+  * 如果要将其作为desktop的文本文件编辑，则打开的时候选择某个文本编辑器而不能双击运行；
+```
+
+[Desktop Entry]
+Name=pycharm
+Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
+Icon=
+Type=Application
+StartupNotify=true
+GenericName[zh_CN]=pycharm CE
+Comment[zh_CN]=pycharm社区版
+
+```
+
+#### 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
+* 说明：dpkg是ubuntu的包管理；
+* 参考：
+  * [1](http://www.xiazaiba.com/jiaocheng/27592.html)
+  * [2](https://zhidao.baidu.com/question/1691933368850239588.html)
+* 举例：
+
+```
+
+# list deb packages in current folder
+
+$ ll
+drwx------ 2 xx   xx        4096 7月   1  2014 ./
+drwxr-xr-x 4 xx   xx        4096 5月  31 07:58 ../
+-rw-r--r-- 1 root root   1607142 1月   3  2014 fonts-wqy-microhei_0.2.0-beta-2_all.deb
+-rw-r--r-- 1 root root      2566 1月   3  2014 ttf-wqy-microhei_0.2.0-beta-2_all.deb
+-rw-r--r-- 1 root root 123289302 5月   3  2014 wine-qqintl_0.1.3-2_i386.deb
+
+sudo dpkg -I fonts-wqy-microhei_0.2.0-beta-2_all.deb  # 查看deb包的信息，此非安装；
+sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb  # install deb包；
+sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已经安装的模块名字和安装包的名字不同，请注意；
+
+```
 
 ## 2. Special Topic Hints
 
