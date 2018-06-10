@@ -23,6 +23,9 @@
     * 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
     * 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
     * 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
+    * 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
+    * 1.1.22-Ubuntu18.04如何安装rpm包
+    * 1.1.23-Ubuntu18.04的各种安装集锦
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -31,6 +34,7 @@
       * 2.1.1.2-GIT仓库
         * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
         * 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
+      * 2.1.1.3-GITLAB安装
     * 2.1.2-JAVA
       * 2.1.2.1-JDK 
         * 2.1.2.1.1-JDK安装
@@ -270,6 +274,34 @@ sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已
 
 #### 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
 
+#### 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
+* ubuntu安装wine
+  * 可以在ubuntu的software里面搜索“wine”关键字，然后安装3.0.1最新稳定版，而不是3.9.0的开发最新版本；
+  * 同样方法可以安装”winetricks“，它启动后，自动扫描ubuntu的wine环境的缺漏dll，并一一安装，很方便;
+* 警告：
+  * 经过wine试用，发现wine还是比较不稳定的，经常导致了ubuntu的报错，删除后报错明显少了;
+  * 而且wine容易让linux感染win下面的病毒，因为wine将win底层api调用转换为linux的底层api调用;
+
+#### 1.1.22-Ubuntu18.04如何安装rpm包
+* 说明
+  * rpm是suselinux的安装包，而不是centos/debian/ubuntu家族的linux，格式略有不同;
+  * ubuntu建议，将rpm包转换为的deb包格式，并用ubuntu的dpkg的包管理来处理，具体方法如下;
+  * 参考：https://www.linuxidc.com/Linux/2017-08/146269.htm
+
+```
+
+apt-get install alien //安装alien模块;
+alien packageabc.rpm     //使用alien将rpm包转换成deb格式的包;
+dpkg -I packageabc.deb   //-I参数是查看pakcage信息，其他参数自己dpkg不带参数看help提示;
+dpkg -i package.deb      //通过dpkg安装deb格式的包
+//ubuntu的 apt-get模块其实后台也是用dpkg来管理包的，ubuntu官方建议尽量用apt/dpkg来管理包;
+
+```
+
+#### 1.1.23-Ubuntu18.04的各种安装集锦
+* 参考：https://blog.csdn.net/fuchaosz/article/details/51882935
+
+
 ## 2. Special Topic Hints
 
 ### 2.1 Programming
@@ -305,6 +337,33 @@ sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已
 * 解决：关闭GIT的SSH认证，因为私服GIT往往不可能像github这样全球公开且有SSH认证证书的站点，所以私服往往不配置证书，而pycharm需要忽略他，其实不是pycharm忽略是ubuntu系统忽略；
   * 参考： [参考](http://quabr.com/21181231/server-certificate-verification-failed-cafile-etc-ssl-certs-ca-certificates-c)
   * 命令： export GIT_SSL_NO_VERIFY=1 //Open your terminal and run following command, finally restart your pycharm from cmd like "./bin/pycharm.sh"；
+
+##### 2.1.1.3-GITLAB安装
+* 参考：
+  * [在ubuntu16上搭建gitlab](https://blog.csdn.net/qq_36467463/article/details/78283874)
+    * 教简单，安装配置完，查看status或restart就能启动，并在“http://localhost/”查看，要额外配置https等高级操作请自查;    
+  * [gitlab备份、还原及迁移(经验证可行)](https://www.cnblogs.com/kowloon/p/7504140.html)
+    * 备份包必须放置在指定的“backup”下，如“/var/opt/gitlab/backups/1528390913_2018_06_08_10.3.0_gitlab_backup.tar”
+    * 并将文件名前缀作为参数放入命令，如“gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0”    
+  * [修改gitlab的root密码](https://jingyan.baidu.com/article/6525d4b181bd41ac7d2e94af.html)
+
+```
+sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
+sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
+
+# 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
+/opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
+# 看到提示符变为“irb(main):001:0>”就对了;
+irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
+=> #<User id:1 @root>                         //输出证明已经查到并选中了root用户
+irb(main):002:0> user.password='123456'       //修改帐号密码
+=> "123456"                                   //输出修改后的新密码，就是上面你给的新密码
+irb(main):003:0> user.save                    //保存用户信息
+Enqueued ActionMailer::DeliveryJob (Job ID: 18b1dbf3-93bf-4859-a190-b0fca6c0654d) to Sidekiq(mailers) with arguments: "DeviseMailer", "password_change", "deliver_now", gid://gitlab/User/1
+=> true                                       //保存结果为true，搞定;
+irb(main):004:0> quit                         //退出rails环境;
+
+```
   
 #### 2.1.2 JAVA
 
