@@ -257,7 +257,7 @@ Comment[zh_CN]=pycharm社区版
 
 ```
 
-# list deb packages in current folder
+list deb packages in current folder
 
 $ ll
 drwx------ 2 xx   xx        4096 7月   1  2014 ./
@@ -351,9 +351,9 @@ dpkg -i package.deb      //通过dpkg安装deb格式的包
 sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
 sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
 
-# 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
+  //修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
 /opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
-# 看到提示符变为“irb(main):001:0>”就对了;
+  //看到提示符变为“irb(main):001:0>”就对了;
 irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
 => #<User id:1 @root>                         //输出证明已经查到并选中了root用户
 irb(main):002:0> user.password='123456'       //修改帐号密码
