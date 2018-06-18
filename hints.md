@@ -45,6 +45,9 @@
       * 2.1.4.1-JMeter 
         * 2.1.4.1.1-JMeter的安装
         * 2.1.4.1.2-JMeter的分布式测试
+    * 2.1.5-Python
+      * 2.1.5.1-Anaconda 
+        * 2.1.5.1.1-Anaconda的安装
   * 2.2-机器学习
     * 2.2.1-环境安装 
       * 2.2.1.1-ubuntu   
@@ -235,19 +238,19 @@
   * "Icon"字段是连接ico图标的，如下暂时没有先空着；
   * 此desktop文件需要鼠标右键选择“属性->权限”，勾选“允许作为程序执行文件”，才能再以后双击运行；
   * 如果要将其作为desktop的文本文件编辑，则打开的时候选择某个文本编辑器而不能双击运行；
-  
-```
-
-[Desktop Entry]
-Name=pycharm
-Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
-Icon=
-Type=Application
-StartupNotify=true
-GenericName[zh_CN]=pycharm CE
-Comment[zh_CN]=pycharm社区版
-
-```
+    
+    ```
+    
+    [Desktop Entry]
+    Name=pycharm
+    Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
+    Icon=
+    Type=Application
+    StartupNotify=true
+    GenericName[zh_CN]=pycharm CE
+    Comment[zh_CN]=pycharm社区版
+    
+    ```
 
 #### 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
 * 说明：dpkg是ubuntu的包管理；
