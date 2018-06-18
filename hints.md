@@ -235,6 +235,7 @@
   * "Icon"字段是连接ico图标的，如下暂时没有先空着；
   * 此desktop文件需要鼠标右键选择“属性->权限”，勾选“允许作为程序执行文件”，才能再以后双击运行；
   * 如果要将其作为desktop的文本文件编辑，则打开的时候选择某个文本编辑器而不能双击运行；
+  
 ```
 
 [Desktop Entry]
@@ -257,7 +258,7 @@ Comment[zh_CN]=pycharm社区版
 
 ```
 
-list deb packages in current folder
+# list deb packages in current folder
 
 $ ll
 drwx------ 2 xx   xx        4096 7月   1  2014 ./
@@ -314,7 +315,7 @@ dpkg -i package.deb      //通过dpkg安装deb格式的包
 * 参考: 请自查摆渡/谷歌/BING,关键字"git push到多个远端仓库";
 * 方法: 项目目录下有个隐藏的".git"目录,修改其下的配置文件".git\config":
    
-   ```
+```
    
    # 在.git\config文件添加如下独立小节,"<>"之间内容需根据实际情况变化,以下是举例:
      [remote "all-remote-git(gitee/github/gitlab)"]
@@ -322,7 +323,7 @@ dpkg -i package.deb      //通过dpkg安装deb格式的包
      url = https://github.com/<user-account>/<repo-name>.git
      url = https://gitlab.com/<user-account>/<repo-name>.git
 
-   ```
+```
 
 ##### 2.1.1.2 GIT仓库
 
@@ -351,9 +352,9 @@ dpkg -i package.deb      //通过dpkg安装deb格式的包
 sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
 sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
 
-  //修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
+# 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
 /opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
-  //看到提示符变为“irb(main):001:0>”就对了;
+# 看到提示符变为“irb(main):001:0>”就对了;
 irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
 => #<User id:1 @root>                         //输出证明已经查到并选中了root用户
 irb(main):002:0> user.password='123456'       //修改帐号密码
@@ -377,7 +378,7 @@ irb(main):004:0> quit                         //退出rails环境;
     * 需注册oracle帐号,随意用一个email注册就行;
   * 安装: 
   
-  ```
+```
   
   sudo tar xvzf jdk-8u102-linux-x64.tar.gz //解压二进制安装包(非源码包需要编译)
   sudo chmod 777 /etc/profile   //如果profile文件是644模式,可以先转变为777,修改完了再chmod回去;
@@ -401,7 +402,7 @@ irb(main):004:0> quit                         //退出rails环境;
 
   # 其他JDK版本情况: JDK9据悉不太好用,JDK10目前较新,用的人不多,还需要观察!
 
-  ```
+```
   
 #### 2.1.3 DataBase
 
@@ -433,7 +434,7 @@ irb(main):004:0> quit                         //退出rails环境;
 * 官网老版本下载链接: [ https://archive.apache.org/dist/jmeter/binaries/](https://archive.apache.org/dist/jmeter/binaries/)
 * 安装: 
     
-    ```
+```
     
     tar -zxvf apache-jmeter-4.0.tgz    //解压缩二进制包
     sudo mv apache-jmeter-4.0 /usr/local/apache-jmeter-4.0/        //拷贝到合适的目录
@@ -441,7 +442,7 @@ irb(main):004:0> quit                         //退出rails环境;
     /usr/local/jmeter/bin/jmeter.sh  //启动jmeter
     ps -ef|grep jmeter   //查看进程并可kill杀掉无用jmeter进程
     
-    ```
+```
 
 ###### 2.1.4.1.2 JMeter的分布式测试
 * 分布式JMETER使用指南
@@ -490,6 +491,16 @@ irb(main):004:0> quit                         //退出rails环境;
       * 建议如果是WIN,进入控制面板,可以设定防火墙的路由规则,可以放开port口的出入,也可以将master/agent的ip都列为全部放开!
       * 如果是linux,比如ubuntu,则可以用iptables防火墙设定规则来放开PORT或IP,因为最新ubuntu18.04简化了iptables,用工具UFW来控制防火墙,请查相关脚本,UFW使用较为方便!
 
+
+#### 2.1.5 Python
+
+##### 2.1.5.1 Anaconda 
+
+###### 2.1.5.1.1 Anaconda的安装
+* [官网](https://www.anaconda.com/download/#linux)
+* 命令： “/home/youracount/tool/Anaconda3-4.3.1-Linux-x86_64.sh” //会指导你安装；具体看你安装在哪个目录，如果需要执行权限如下；
+  * "sudo chmod +x ./Anaconda3-4.3.1-Linux-x86_64.sh"  //进入tool目录后，为sh安装脚本添加执行x权限；
+
 ### 2.2 机器学习
 
 #### 2.2.1 环境安装 
@@ -499,7 +510,7 @@ irb(main):004:0> quit                         //退出rails环境;
 ###### 2.2.1.1.1 ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW
 * 1.查看nvidia显卡配置
 
-  ```
+```
   
     # 查看N卡GPU的配置
     nvidia-smi
@@ -511,7 +522,7 @@ irb(main):004:0> quit                         //退出rails环境;
     $ lspci | grep -i nvidia
     # 返回内容: 01:00.0 VGA compatible controller: NVIDIA Corporation GM107M [GeForce GTX 960M] (rev a2)
     
-  ```  
+```  
 
 * 2.安装cuda的折腾过程
   * 参考(较好): [http://www.zhimengzhe.com/bianchengjiaocheng/qitabiancheng/415560.html](http://www.zhimengzhe.com/bianchengjiaocheng/qitabiancheng/415560.html)
@@ -531,7 +542,7 @@ irb(main):004:0> quit                         //退出rails环境;
 
 * 3.安装cuda9.1/CUDA9.0/CUDA较高版本(cuda安装包提示最高支持ubuntu17.10,别管它,其实18.04照样安装!没事!)
 
-    ```
+```
     
       A.执行cuda9.X的run安装文件出现问题
     
@@ -588,7 +599,7 @@ irb(main):004:0> quit                         //退出rails环境;
     Built on Fri_Nov__3_21:07:56_CDT_2017
     Cuda compilation tools, release 9.1, V9.1.85
     
-    ```
+```
 
 * 4.安装cudnn7.1.2(配套CUDA9.X)
   * [官网下载](https://developer.nvidia.com/rdp/cudnn-archive) (需免费注册nvidia会员)
@@ -623,7 +634,7 @@ irb(main):004:0> quit                         //退出rails环境;
   * 先再次安装,改个名字: pip3 install gym[Box2D]   //单独命令安装Box2D,而不是all,也不是原来过时的Box2D-kengz
   * 安装成功后,如下测试:
 
-  ```
+```
   测试Box2D物理引擎是通过激活如下的小游戏CartPole:
   
   用如下命令来测试Box2D是否安装成功,如果失败,只会出现白框,而没有杆子!
@@ -634,7 +645,7 @@ irb(main):004:0> quit                         //退出rails环境;
   env.render()  //渲染,此时会弹出dialog,里面有杆子!就算OK了!
   env.close()  //关闭env环境,dialog不能被gui关闭,只能用本行命令关闭!
   
-  ```
+```
 
 * 4.安装gym的Atari-py的小游戏强化环境集合
   * 单独安装: pip3 install gym[atari-py]   //报错一样,显示可能cmake有问题(win10下就需要安装MingGW等环境,最终没时间弄下去)
@@ -647,7 +658,7 @@ irb(main):004:0> quit                         //退出rails环境;
     * 在该目录直接运行命令make,它自动编译同目录的makefile编译编辑脚本,于是so文件有了,再次测试!!!通过了!!!
     * atari 安装完成!!!!
 
-    ```
+```
     测试:
     python //进入python,最好是PY3
     import gym  //load gym库,这里不能有报错
@@ -655,7 +666,7 @@ irb(main):004:0> quit                         //退出rails环境;
     env.reset() //初始化
     env.render()  //渲染,此时会弹出dialog,里面有飞机!就算OK了!
     env.close()  //关闭env环境,dialog不能被gui关闭,只能用本行命令关闭!
-    ```
+```
 
 * 5.运行RL强化学习的例子
   * 强化学习RL很有趣,最近在学习,看了一些morvan的教程(github查找关键字"morvan"得到的第一个结果)
